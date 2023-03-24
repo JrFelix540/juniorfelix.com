@@ -1,0 +1,39 @@
+---
+import EmailIcon from "../assets/icons/EmailIcon.astro";
+import FacebookIcon from "../assets/icons/FacebookIcon.astro";
+import LinkedIn from "../assets/icons/LinkedIn.astro";
+import TwitterIcon from "../assets/icons/TwitterIcon.astro";
+
+export interface Props {
+  url: URL;
+  title: string;
+}
+const { url, title } = Astro.props;
+const twitterShareLink = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+const linkedInShareLink = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
+const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+const emailShareLInk = `mailto:?subject=${title}&body=Check out this article ${url}`;
+---
+
+<div class="container">
+  <a href={twitterShareLink} class="link" target="_blank">
+    <TwitterIcon />
+  </a>
+  <a href={linkedInShareLink} class="link" target="_blank">
+    <LinkedIn />
+  </a>
+  <a href={facebookShareLink} class="link" target="_blank">
+    <FacebookIcon />
+  </a>
+  <a href={emailShareLInk} class="link" target="_blank">
+    <EmailIcon />
+  </a>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+</style>

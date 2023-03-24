@@ -1,13 +1,46 @@
 ---
+import DiscordIcon from "../assets/icons/DiscordIcon.astro";
+import EmailIcon from "../assets/icons/EmailIcon.astro";
+import FeedIcon from "../assets/icons/FeedIcon.astro";
+import GithubIcon from "../assets/icons/GithubIcon.astro";
+import Email from "./Email.astro";
+
 const today = new Date();
 ---
 
-<footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+<footer class="footer">
+  <div class="social-links">
+    <a href="mailto:juniorfelix8825@outlook.com" class="link">
+      <EmailIcon />
+    </a>
+    <a href="https://discordapp.com/users/758804652686049300" class="link">
+      <DiscordIcon />
+    </a>
+    <a href="https://github.com/JrFelix540" target="_blank" class="link">
+      <GithubIcon />
+    </a>
+    <a href="" target="_blank" class="link">
+      <FeedIcon />
+    </a>
+  </div>
+  &copy; {today.getFullYear()} Junior Felix.
 </footer>
 <style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
+  .footer {
+    padding: 25px;
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 25px;
+  }
+  .link {
+  }
+  .icon {
+    height: 24px;
+    width: 24px;
+  }
 </style>

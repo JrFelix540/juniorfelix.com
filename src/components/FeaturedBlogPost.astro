@@ -1,0 +1,82 @@
+---
+import { getReadingTime } from "../utils/getReadingTime";
+
+export interface Props {
+  title: string;
+  heroImage?: string;
+  slug: string;
+  pubDate: Date;
+  body: string;
+  summary: string;
+}
+const { title, heroImage, pubDate, slug, summary, body } = Astro.props;
+const backgroundImage = `url(${heroImage})`;
+const url = `/blog/${slug}`;
+const date = new Date(pubDate).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const readingTime = getReadingTime(body);
+---
+
+<a href={url} class="link">
+  <div class="container">
+    <div class="featured-image"></div>
+    <div class="content">
+      <p class="time">
+        {date}
+        <span class="dot">•</span>{readingTime} minutes to read
+      </p>
+      <h3 class="title">{title}</h3>
+      <p>{summary}</p>
+    </div>
+  </div>
+</a>
+<style define:vars={{ backgroundImage }}>
+  .link {
+    text-decoration: none;
+  }
+  .link:hover {
+    text-decoration: none;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background-color: #1f1f1f;
+    border-radius: 20px;
+    grid-auto-rows: 1fr;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+  }
+  .featured-image {
+    background-image: var(--backgroundImage);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .title {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .time {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+  }
+  .dot {
+    margin: 0 4px;
+  }
+  @media (max-width: 769px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

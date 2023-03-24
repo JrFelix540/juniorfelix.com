@@ -1,0 +1,80 @@
+---
+import ExternalLink from "./ExternalLink.astro";
+
+export interface Props {
+  year: string;
+  title: string;
+  blogURL?: string;
+  sourceURL: string;
+  description: string;
+  demoURL?: string;
+}
+
+const { title, description, year, blogURL, sourceURL, demoURL } = Astro.props;
+---
+
+<div class="container">
+  <div class="content">
+    <time class="year" datetime={year}>{year}</time>
+    <h3 class="title">{title}</h3>
+    <p class="description">{description}</p>
+  </div>
+  <div class="links-container">
+    {
+      blogURL && (
+        <a href={blogURL} class="link">
+          Article
+        </a>
+      )
+    }
+    {
+      demoURL && (
+        <a href={demoURL} class="link" target="_blank">
+          Demo
+          <ExternalLink />
+        </a>
+      )
+    }
+    <a href={sourceURL} class="link" target="_blank">Source <ExternalLink /></a>
+  </div>
+</div>
+<style>
+  .container {
+    background-color: #1f1f1f;
+    border: 1px solid #2c2c2c;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .year {
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .description {
+    color: #999;
+    font-size: 16px;
+  }
+  .links-container {
+    display: flex;
+    gap: 6px;
+  }
+  .link {
+    padding: 6px 8px;
+    border: 1px solid #2c2c2c;
+    color: #fff;
+    background-color: #252525;
+    border-radius: 6px;
+  }
+  .link:hover {
+    border-color: #666;
+    text-decoration: none;
+  }
+</style>

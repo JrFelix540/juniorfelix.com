@@ -1,0 +1,54 @@
+---
+import { Image } from "@astrojs/image/components";
+import image from "/house.png";
+---
+
+<section class="container">
+  <div class="content">
+    <h1 class="title">Hello, I'm Felix!</h1>
+    <p class="description">
+      I am a software developer and this is my little corner of the internet.
+      Here, I share my thoughts and experiences on building software apps. Join
+      me in exploring the tech world and let's learn together!
+    </p>
+  </div>
+  <div class="hero-image">
+    <img src="/assets/images/house.png" alt="hero image" />
+  </div>
+</section>
+<style>
+  .container {
+    padding: 50px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .title {
+    font-size: 48px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .description {
+    font-size: 20px;
+    color: #e6e6e6;
+  }
+  .hero-image {
+    display: flex;
+    justify-content: center;
+  }
+  @media (max-width: 769px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+    .hero-image {
+      display: none;
+    }
+    .title {
+      font-size: 36px;
+    }
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import { getReadingTime } from "../utils/getReadingTime";
+
+export interface Props {
+  title: string;
+  heroImage?: string;
+  slug: string;
+  pubDate: Date;
+  body: string;
+}
+const { title, heroImage, pubDate, slug, body } = Astro.props;
+const backgroundImage = `url(${heroImage})`;
+const url = `/blog/${slug}`;
+const date = new Date(pubDate).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const readingTime = getReadingTime(body);
+---
+
+<a class="link" href={url} target="_blank">
+  <div class="card">
+    <div class="image"></div>
+    <div class="content">
+      <h3 class="title">{title}</h3>
+      <p class="description">
+        {date}
+        <span class="dot">•</span>{readingTime} minutes to read
+      </p>
+    </div>
+  </div>
+</a>
+
+<style define:vars={{ backgroundImage }}>
+  .link:hover {
+    text-decoration: none;
+  }
+  .card {
+    display: grid;
+    border-radius: 8px;
+    background-color: #1f1f1f;
+    border: 1px solid #2c2c2c;
+  }
+  .image {
+    height: 200px;
+    width: 100%;
+    background-image: var(--backgroundImage);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .title {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .description {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+  }
+  .dot {
+    margin: 0 4px;
+  }
+</style>

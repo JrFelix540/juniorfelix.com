@@ -3,17 +3,71 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+
+:root {
+  /* Colors */
+  --gray-0: #f9f9f9;
+  --gray-05: #f6f6f6;
+  --gray-1: #eee;
+  --gray-2: #e6e6e6;
+  --gray-3: #ddd;
+  --gray-4: #bbb;
+  --gray-5: #999;
+  --gray-6: #666;
+  --gray-65: #555;
+  --gray-7: #2c2c2c;
+  --gray-8: #252525;
+  --gray-9: #1f1f1f;
+  --gray-10: #181818;
+
+  --green: #14ae73;
+  --green-1: #95cd7f;
+  --green-2: #73b18a;
+  --green-3: #4d8994;
+  --green-4: #30619d;
+  --green-5: #30379d;
+
+  --red: #f34646;
+  --red-1: #fdd94a;
+  --red-2: #e0a944;
+  --red-3: #d37d36;
+  --red-4: #cd583c;
+  --red-5: #ab2e3f;
+
+  --blue: #07a7e6;
+  --blue-1: #70bdee;
+  --blue-2: #618be1;
+  --blue-3: #5b5ed5;
+  --blue-4: #623ac6;
+  --blue-5: #58119f;
+
+  --rainbow-1: #ff67f7;
+  --rainbow-2: #9b78fa;
+  --rainbow-3: #59abf7;
+  --rainbow-4: #5eddac;
+  --rainbow-5: #f6cd5d;
+
+  --orange: #ff7e22;
+  --yellow: #fca62a;
+  --pink: #f57ad0;
+  --purple: #673ece;
+  --indigo: #5a43f1;
+  --indigo-dark: #4509cf;
+  --indigo-light: #969bf6;
+  --indigo-muted: #f1f2fd;
+}
+
 body {
-	font-family: Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
-	text-align: left;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+  font-family: Verdana, sans-serif;
+  margin: auto;
+  padding: 20px;
+  max-width: 1160px;
+  text-align: left;
+  background-color: #181818;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+  color: #ffffff;
 }
 h1,
 h2,
@@ -21,47 +75,56 @@ h3,
 h4,
 h5,
 h6,
+p,
 strong,
 b {
-	color: #222;
+  color: #fff;
+  margin: 0;
+  padding: 0;
 }
 a {
-	color: #3273dc;
+  color: #3273dc;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 nav a {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 textarea {
-	width: 100%;
-	font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
 input {
-	font-size: 16px;
+  font-size: 16px;
 }
 content {
-	line-height: 1.6;
+  line-height: 1.6;
 }
 table {
-	width: 100%;
+  width: 100%;
 }
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 code {
-	padding: 2px 5px;
-	background-color: #f2f2f2;
+  padding: 3px 5px;
+  background-color: #131313;
+  border: 1px solid var(--gray-7);
+  border-radius: 4px;
 }
 pre {
-	padding: 1rem;
+  padding: 1rem;
 }
 pre > code {
-	all: unset;
+  all: unset;
 }
 blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
-	font-style: italic;
+  border: 1px solid #999;
+  color: #222;
+  padding: 2px 0px 2px 20px;
+  margin: 0px;
+  font-style: italic;
 }

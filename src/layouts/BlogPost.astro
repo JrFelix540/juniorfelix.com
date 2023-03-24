@@ -1,51 +1,119 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import MarkdownWrapper from "../components/MarkdownWrapper.astro";
+import { getReadingTime } from "../utils/getReadingTime";
+import SharePost from "../components/SharePost.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"] & { body: string };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, body } =
+  Astro.props;
+
+const readingTime = getReadingTime(body);
+const heroImageURL = `url(${heroImage})`;
+const postURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+    <style define:vars={{ heroImageURL }}>
+      .main {
+        padding-top: 80px;
+        display: flex;
+        justify-content: center;
+      }
+      .article {
+        max-width: 760px;
+      }
+      .meta {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 30px;
+      }
+      .title {
+        font-size: 42px;
+        line-height: 40px;
+      }
+      .last-updated-on {
+        color: #e6e6e6;
+        margin-bottom: 0;
+      }
+      .tags-container {
+        display: flex;
+        gap: 6px;
+      }
+      .tag {
+        padding: 0.5px 2px;
+        border-radius: 6px;
+        border: 1px solid #2c2c2c;
+        color: #e6e6e6;
+        background-color: #252525;
+      }
+      .hero {
+        height: 250px;
+        width: 100%;
+        background-image: var(--heroImageURL);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      .meta-share {
+        display: flex;
+        justify-content: space-between;
+      }
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
-				<FormattedDate date={pubDate} />
-				{
-					updatedDate && (
-						<div class="last-updated-on">
-							Last updated on <FormattedDate date={updatedDate} />
-						</div>
-					)
-				}
-				<hr />
-				<slot />
-			</article>
-		</main>
-		<Footer />
-	</body>
+      @media (max-width: 769px) {
+        .meta-share {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .title {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main class="main">
+      <article class="article">
+        <div class="meta">
+          <h1 class="title">{title}</h1>
+          <div class="meta-share">
+            {
+              updatedDate ? (
+                <p class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                  <span class="dot">•</span>
+                  {readingTime} minutes to read
+                </p>
+              ) : (
+                <p class="last-updated-on">
+                  Published on <FormattedDate date={pubDate} />
+                  <span class="dot">•</span>
+                  {readingTime} minutes to read
+                </p>
+              )
+            }
+            <SharePost title={title} url={postURL} />
+          </div>
+          <div class="tags-container">
+            {tags.map((tag) => <div class="tag">{tag}</div>)}
+          </div>
+          <div class="hero"></div>
+        </div>
+        <MarkdownWrapper>
+          <slot />
+        </MarkdownWrapper>
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>

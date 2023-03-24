@@ -1,0 +1,38 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import ProjectPreview from "../components/ProjectPreview.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const projects = [
+  {
+    title: "Tetris Game",
+    description: "A fun game for all to play",
+    year: "2022",
+    sourceURL: "#",
+    blogURL: "#",
+    demoURL: "#",
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main class="container">
+      {projects.map((project) => <ProjectPreview {...project} />)}
+    </main>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 40px 0;
+      }
+    </style>
+  </body>
+</html>
