@@ -63,12 +63,17 @@ body {
   padding: 20px;
   max-width: 1160px;
   text-align: left;
-  background-color: #181818;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.5;
-  color: #ffffff;
 }
+html {
+  background-color: #181818;
+}
+html.light {
+  background-color: #eeeeee;
+}
+
 h1,
 h2,
 h3,
@@ -78,10 +83,10 @@ h6,
 p,
 strong,
 b {
-  color: #fff;
   margin: 0;
   padding: 0;
 }
+
 a {
   color: #3273dc;
   text-decoration: none;
@@ -114,6 +119,11 @@ code {
   background-color: #131313;
   border: 1px solid var(--gray-7);
   border-radius: 4px;
+}
+
+.light code {
+  background-color: #f9f9f9;
+  border-color: #ddd;
 }
 pre {
   padding: 1rem;

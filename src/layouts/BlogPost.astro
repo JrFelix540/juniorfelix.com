@@ -39,6 +39,7 @@ const postURL = new URL(Astro.url.pathname, Astro.site);
       .title {
         font-size: 42px;
         line-height: 40px;
+        color: #fff;
       }
       .last-updated-on {
         color: #e6e6e6;
@@ -67,7 +68,18 @@ const postURL = new URL(Astro.url.pathname, Astro.site);
         display: flex;
         justify-content: space-between;
       }
+      :global(.light) .title {
+        color: #252525;
+      }
+      :global(.light) .last-updated-on {
+        color: #2c2c2c;
+      }
 
+      :global(.light) .tag {
+        background-color: #f6f6f6;
+        color: #2c2c2c;
+        border-color: #ddd;
+      }
       @media (max-width: 769px) {
         .meta-share {
           flex-direction: column;

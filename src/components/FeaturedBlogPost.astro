@@ -37,6 +37,7 @@ const readingTime = getReadingTime(body);
 <style define:vars={{ backgroundImage }}>
   .link {
     text-decoration: none;
+    color: #fff;
   }
   .link:hover {
     text-decoration: none;
@@ -73,6 +74,16 @@ const readingTime = getReadingTime(body);
   }
   .dot {
     margin: 0 4px;
+  }
+  :global(.light) .container {
+    background-color: #f9f9f9;
+    border-color: #ddd;
+  }
+  :global(.light) .title {
+    color: #252525;
+  }
+  :global(.light) .link {
+    color: #252525;
   }
   @media (max-width: 769px) {
     .container {

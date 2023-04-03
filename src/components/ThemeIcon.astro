@@ -19,6 +19,7 @@
   #themeToggle {
     border: 0;
     background: none;
+    cursor: pointer;
   }
   .sun {
     fill: #fff;
@@ -27,10 +28,41 @@
     fill: transparent;
   }
 
-  :global(.dark) .sun {
+  :global(.light) .sun {
     fill: transparent;
   }
-  :global(.dark) .moon {
-    fill: white;
+  :global(.light) .moon {
+    fill: #252525;
   }
 </style>
+<script>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-colors-scheme: light)").matches) {
+      return "light";
+    }
+    return "dark";
+  })();
+
+  if (theme === "dark") {
+    document.documentElement.classList.remove("light");
+  } else {
+    document.documentElement.classList.add("light");
+  }
+
+  window.localStorage.setItem("theme", theme as string);
+
+  const handleToggleClick = () => {
+    const element = document.documentElement;
+    element.classList.toggle("light");
+
+    const isLight = element.classList.contains("light");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  };
+
+  document
+    .getElementById("themeToggle")
+    .addEventListener("click", handleToggleClick);
+</script>

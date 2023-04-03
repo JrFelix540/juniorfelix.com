@@ -48,6 +48,7 @@ const { title, description, year, blogURL, sourceURL, demoURL } = Astro.props;
     gap: 20px;
   }
   .year {
+    color: #fff;
   }
   .content {
     display: flex;
@@ -55,8 +56,9 @@ const { title, description, year, blogURL, sourceURL, demoURL } = Astro.props;
     gap: 2px;
   }
   .title {
-    font-weight: 700;
     font-size: 18px;
+    font-weight: 400;
+    color: #fff;
   }
   .description {
     color: #999;
@@ -76,5 +78,31 @@ const { title, description, year, blogURL, sourceURL, demoURL } = Astro.props;
   .link:hover {
     border-color: #666;
     text-decoration: none;
+  }
+
+  :global(.light) .container {
+    background-color: #f9f9f9;
+    border-color: #ddd;
+  }
+
+  :global(.light) .title {
+    color: #252525;
+  }
+
+  :global(.light) .description .year {
+    color: #666;
+  }
+
+  :global(.light) .link {
+    background-color: #f6f6f6;
+    color: #2c2c2c;
+    border-color: #ddd;
+  }
+
+  :global(.light) .link:hover {
+    border-color: #666;
+  }
+  :global(.light) .year {
+    color: #999;
   }
 </style>

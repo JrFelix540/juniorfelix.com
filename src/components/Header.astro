@@ -1,5 +1,4 @@
 ---
-import "../styles/header.css";
 import HeaderLink from "./HeaderLink.astro";
 import ThemeIcon from "./ThemeIcon.astro";
 ---
@@ -15,3 +14,37 @@ import ThemeIcon from "./ThemeIcon.astro";
   </nav>
   <ThemeIcon />
 </header>
+<style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .navigation > a {
+    text-decoration: none;
+    color: #bbb;
+  }
+
+  .navigation > a:hover {
+    color: #fff;
+  }
+  .navigation > .active {
+    text-decoration: underline;
+    color: #ffffff;
+  }
+
+  :global(.light) .navigation > a {
+    color: #2a2a2a;
+  }
+
+  :global(.light) .navigation > a:hover {
+    color: #2a2a2a;
+  }
+</style>
