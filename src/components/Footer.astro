@@ -23,7 +23,7 @@ const today = new Date();
       <FeedIcon />
     </a>
   </div>
-  &copy; {today.getFullYear()} Junior Felix.
+  <p class="copy">&copy; {today.getFullYear()} Junior Felix.</p>
 </footer>
 <style>
   .footer {
@@ -37,7 +37,11 @@ const today = new Date();
     gap: 20px;
     padding: 0 25px;
   }
-  .link {
+  .copy {
+    color: #fff;
+  }
+  :global(.light) .copy {
+    color: #000;
   }
   .icon {
     height: 24px;
