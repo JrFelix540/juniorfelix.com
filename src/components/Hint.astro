@@ -1,0 +1,19 @@
+---
+---
+
+<div class="container">
+  <slot />
+</div>
+<style>
+  .container {
+    background-color: #1f1f1f;
+    border: 1px solid #2c2c2c;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  :global(.light) .container {
+    background-color: #f9f9f9;
+    border-color: #ddd;
+  }
+</style>

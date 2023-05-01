@@ -4,7 +4,6 @@ description: "Here is a sample of some basic Markdown syntax that can be used wh
 pubDate: "Jul 01 2022"
 heroImage: "/placeholder-hero.jpg"
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum augue at enim efficitur porta sit amet eget dolor. Donec arcu felis, laoreet vitae porttitor ut, auctor at sapien. Pellentesque ac viverra augue. Nunc elit libero, porttitor eu dui eget, viverra consectetur arcu. Vestibulum condimentum lorem ut efficitur rhoncus. Nulla pellentesque iaculis metus, eu fringilla erat. Cras eu diam eu nisl rutrum ullamcorper."
-featured: true
 tags: ["Markdown", "Test"]
 ---
 
