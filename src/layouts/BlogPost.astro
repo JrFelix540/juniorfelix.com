@@ -90,6 +90,10 @@ const postURL = new URL(Astro.url.pathname, Astro.site);
           font-size: 36px;
           line-height: 36px;
         }
+        .article {
+          padding: 20px;
+          max-width: 100%;
+        }
       }
     </style>
   </head>
@@ -97,7 +101,7 @@ const postURL = new URL(Astro.url.pathname, Astro.site);
   <body>
     <Header />
     <main class="main">
-      <article class="article">
+      <div class="article">
         <div class="meta">
           <h1 class="title">{title}</h1>
           <div class="meta-share">
@@ -126,7 +130,7 @@ const postURL = new URL(Astro.url.pathname, Astro.site);
         <MarkdownWrapper>
           <slot />
         </MarkdownWrapper>
-      </article>
+      </div>
     </main>
     <Utterances />
     <Footer />
