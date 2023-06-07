@@ -7,10 +7,11 @@ export interface Props {
   slug: string;
   pubDate: Date;
   body: string;
+  externalLink?: string;
 }
-const { title, heroImage, pubDate, slug, body } = Astro.props;
+const { title, heroImage, pubDate, slug, body, externalLink } = Astro.props;
 const backgroundImage = `url(${heroImage})`;
-const url = `/blog/${slug}`;
+const url = externalLink ? externalLink : `/blog/${slug}`;
 const date = new Date(pubDate).toLocaleDateString("en-US", {
   year: "numeric",
   month: "long",
