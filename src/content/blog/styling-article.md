@@ -5,4 +5,5 @@ pubDate: "Jul 25 2022"
 heroImage: "/assets/images/scalable-architecture.jpg"
 tags: ["Architecture"]
 externalLink: "https://valenciandigital.com/insights/building-scalable-styling-architecture-in-react"
+readingTime: 14
 ---

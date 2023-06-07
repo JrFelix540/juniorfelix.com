@@ -8,8 +8,10 @@ export interface Props {
   pubDate: Date;
   body: string;
   externalLink?: string;
+  readingTime?: number;
 }
-const { title, heroImage, pubDate, slug, body, externalLink } = Astro.props;
+const { title, heroImage, pubDate, slug, body, externalLink, readingTime } =
+  Astro.props;
 const backgroundImage = `url(${heroImage})`;
 const url = externalLink ? externalLink : `/blog/${slug}`;
 const date = new Date(pubDate).toLocaleDateString("en-US", {
@@ -18,17 +20,18 @@ const date = new Date(pubDate).toLocaleDateString("en-US", {
   day: "numeric",
 });
 
-const readingTime = getReadingTime(body);
+const approximateReadingTime = readingTime || getReadingTime(body);
+const isExternal = !!externalLink;
 ---
 
-<a class="link" href={url}>
+<a class="link" href={url} target={isExternal ? "_blank" : "_self"}>
   <div class="card">
     <div class="image"></div>
     <div class="content">
       <h3 class="title">{title}</h3>
       <p class="description">
         {date}
-        <span class="dot">•</span>{readingTime} minutes to read
+        <span class="dot">•</span>{approximateReadingTime} minutes to read
       </p>
     </div>
   </div>

@@ -5,4 +5,5 @@ pubDate: "Jun 01 2023"
 heroImage: "/assets/images/rollback.jpg"
 tags: ["Deep Dive"]
 externalLink: "https://valenciandigital.com/insights/building-scalable-styling-architecture-in-react"
+readingTime: 13
 ---

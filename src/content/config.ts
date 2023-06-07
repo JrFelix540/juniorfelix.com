@@ -19,6 +19,7 @@ const blog = defineCollection({
     featured: z.boolean().optional(),
     tags: z.array(z.string()),
     externalLink: z.string().optional(),
+    readingTime: z.number().optional(),
   }),
 });
 
