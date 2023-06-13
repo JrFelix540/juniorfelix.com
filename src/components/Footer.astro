@@ -3,24 +3,31 @@ import DiscordIcon from "../assets/icons/DiscordIcon.astro";
 import EmailIcon from "../assets/icons/EmailIcon.astro";
 import FeedIcon from "../assets/icons/FeedIcon.astro";
 import GithubIcon from "../assets/icons/GithubIcon.astro";
-import Email from "./Email.astro";
+import LinkedIn from "../assets/icons/LinkedIn.astro";
 
 const today = new Date();
 ---
 
 <footer class="footer">
   <div class="social-links">
-    <a href="mailto:juniorfelix8825@outlook.com" class="link">
+    <a href="mailto:juniorfelix8825@outlook.com" target="_blank" class="link">
       <EmailIcon />
     </a>
-    <a href="https://discordapp.com/users/758804652686049300" class="link">
+    <a
+      href="https://discordapp.com/users/758804652686049300"
+      target="_blank"
+      class="link"
+    >
       <DiscordIcon />
     </a>
     <a href="https://github.com/JrFelix540" target="_blank" class="link">
       <GithubIcon />
     </a>
-    <a href="" target="_blank" class="link">
+    <a href="https://juniorfelix.com/rss.xml" target="_blank" class="link">
       <FeedIcon />
+    </a>
+    <a href="https://linkedin.com/in/junior-felix" target="_blank" class="link">
+      <LinkedIn />
     </a>
   </div>
   <p class="copy">&copy; {today.getFullYear()} Junior Felix.</p>
