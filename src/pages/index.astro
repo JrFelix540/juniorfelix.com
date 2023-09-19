@@ -9,7 +9,7 @@ import ProjectPreview from "../components/ProjectPreview.astro";
 import Hero from "../components/Hero.astro";
 
 const posts = (await getCollection("blog"))
-  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
 const projects = [
@@ -19,7 +19,6 @@ const projects = [
       "An online platform where readers from all walks of life can gather to share their thoughts, engage in discussions ",
     year: "2021",
     sourceURL: "https://github.com/JrFelix540/bookclub",
-    demoURL: "https://bookclub-web.vercel.app/",
   },
   {
     title: "Portfolio Website",
