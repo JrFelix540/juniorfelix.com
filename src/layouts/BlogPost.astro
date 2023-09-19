@@ -59,11 +59,11 @@ const postURL = new URL(Astro.url.pathname, Astro.site);
       }
       .hero {
         height: 250px;
+      }
+      .hero img {
+        height: 100%;
         width: 100%;
-        background-image: var(--heroImageURL);
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
+        object-fit: cover;
       }
       .meta-share {
         display: flex;
@@ -125,7 +125,9 @@ const postURL = new URL(Astro.url.pathname, Astro.site);
           <div class="tags-container">
             {tags.map((tag) => <div class="tag">{tag}</div>)}
           </div>
-          <div class="hero"></div>
+          <div>
+            <img src={heroImage} alt="preview image" />
+          </div>
         </div>
         <MarkdownWrapper>
           <slot />
